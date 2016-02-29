@@ -1,16 +1,24 @@
 #!/bin/bash
 clear
-echo -e "\nWelcome to EasyProxy Hatfield v0.1\n\nThis Proxy should be installed in a fresh Centos 7 server.\n"
-
-
+echo -e "\n\e[31mWelcome to EasyProxy Hatfield v0.1\e[0m\n\nThis Proxy should be installed in a fresh Centos 7 server.\nAfter the instalation you only can ssh by port 80. \n\nThis setup will not delete any file, will rename it to .old.\n\n"
 read -p "Do you want continue? (y/n) " RESP
 if [ "$RESP" = "y" ]; then
+
+#Check if is running as root (mandatory)
+if [ “$(id -u)” != “0” ]; then
+echo -e "\nThis script must be run as root. Login as root and test again.\n" 2>&1
+exit 1
+fi
+
 #yum -y install epel-release -y
 #yum --enablerepo=epel -y install sshpass -y
+
 #Generating the new /etc/ssh/sshd_config
-echo "Backup /etc/ssh/sshd_config\n"
+echo -e "Backup /etc/ssh/sshd_config\n"
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.old
-echo "Generating new /etc/ssh/sshd_config\n"
+echo -e "Generating new /etc/ssh/sshd_config\n"
+rm -f /tmp/sshd_config
+sleep 1
 cat <<EOF >> /tmp/sshd_config
 Port 80
 HostKey /etc/ssh/ssh_host_rsa_key
@@ -31,10 +39,13 @@ AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
 AcceptEnv XMODIFIERS
 Subsystem       sftp    /usr/libexec/openssh/sftp-server" > /tmp/sshd_config
 EOF
+
 #Generating the new /etc/ssh/sshd_config
-echo "Backup /etc/ssh/sshd_config\n"
+echo -e "Backup /etc/ssh/sshd_config\n"
 cp /etc/ssh/ssh_config /etc/ssh/ssh_config.old
-echo "Generating new /etc/ssh/ssh_config\n"
+echo -e "Generating new /etc/ssh/ssh_config\n"
+sleep 1
+rm -f /tmp/ssh_config
 cat <<EOF >> /tmp/ssh_config
 Host *
         GSSAPIAuthentication yes
