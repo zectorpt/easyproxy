@@ -13,3 +13,5 @@ cd easyproxy/server/
 
 Local box:<br>
 Insert user / password and IP of the remote server in config.cfg<br>
+
+putty.exe -P 80 root@IP -pw PASS
