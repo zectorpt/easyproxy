@@ -15,7 +15,7 @@ sshpass<br>
 
 #How to do easily with auto configure
 
-Remote server:
-ssh to vps as root
-git clone https://github.com/zectorpt/easyproxy.git
-./configure.sh
+Remote server:<br>
+ssh to vps as root<br>
+git clone https://github.com/zectorpt/easyproxy.git<br>
+./SETUP.sh<br>
