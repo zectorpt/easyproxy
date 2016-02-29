@@ -28,8 +28,8 @@ sleep 1
 yum install ./google-chrome-stable_current_*.rpm -y
 wget https://mirror.its.sfu.ca/mirror/CentOS-Third-Party/NSG/common/x86_64/AdbeRdr9.5.5-1_i486linux_enu.rpm
 sleep 1
-yum install common/x86_64/AdbeRdr9.5.5-1_i486linux_enu.rpm -y
-
+yum localinstall http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm -y
+yum localinstall AdbeRdr9.5.5-1_i486linux_enu.rpm -y
 
 #Generating the new /etc/ssh/sshd_config
 echo -e "Backup /etc/ssh/sshd_config\n"
