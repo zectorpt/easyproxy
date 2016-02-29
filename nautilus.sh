@@ -1,2 +1,3 @@
 #!/bin/bash
-sshpass -pPASSWORD ssh -p 80 -X USER@IP nautilus &
+source config.cfg
+sshpass -p$pass ssh -p 80 -X $user@$ip nautilus &

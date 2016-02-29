@@ -9,3 +9,6 @@ ssh to vps as root<br>
 git clone https://github.com/zectorpt/easyproxy.git<br>
 cd easyproxy
 ./SETUP.sh<br>
+
+Local box:<br>
+Insert user / password and IP of the remote server in config.cfg

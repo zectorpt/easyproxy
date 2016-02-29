@@ -1,2 +1,3 @@
 #!/bin/bash
-sshpass -pPASSWORD ssh -p 80 -X root@IP
+source config.cfg
+sshpass -p$pass ssh -p 80 -X $user@$ip
