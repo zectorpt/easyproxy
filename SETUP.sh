@@ -37,7 +37,7 @@ cp /etc/ssh/sshd_config /etc/ssh/sshd_config.old
 echo -e "Generating new /etc/ssh/sshd_config\n"
 rm -f /etc/ssh/sshd_config
 sleep 1
-cat <<EOF >> /tmp/sshd_config
+cat <<EOF >> /etc/ssh/sshd_config
 Port 80
 HostKey /etc/ssh/ssh_host_rsa_key
 HostKey /etc/ssh/ssh_host_ecdsa_key
@@ -63,7 +63,7 @@ echo -e "Backup /etc/ssh/ssh_config\n"
 cp /etc/ssh/ssh_config /etc/ssh/ssh_config.old
 echo -e "Generating new /etc/ssh/ssh_config\n"
 sleep 1
-rm -f /tmp/ssh_config
+rm -f /etc/ssh/ssh_config
 cat <<EOF >> /etc/ssh/ssh_config
 Host *
         GSSAPIAuthentication yes
