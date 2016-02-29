@@ -1,6 +1,7 @@
-##UNDER DEV. NOR READY YET.
+##UNDER DEV. NOT READY YET.
 
-# Easy Proxy. How bypass your company security!
+## Easy Proxy. How bypass your company security!
+###Welcome to Easy Proxy Hatfield
 
 If you already have a VPS, you can use it. If not, you can buy one for less than 2eur / month <br><br>
 
