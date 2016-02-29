@@ -21,7 +21,7 @@ if ! rpm -qa | grep -qw sshpass; then
 fi
 
 #Install X and some stuff
-yum groupinstall "X Window System" "GNOME Desktop Environment" -y
+yum groupinstall "X Window System" "GNOME Desktop" -y --skip-broken
 systemctl set-default graphical.target
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 sleep 1
