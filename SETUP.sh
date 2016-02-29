@@ -10,8 +10,15 @@ echo -e "\nThis script must be run as root. Login as root and test again.\n" 2>&
 exit 1
 fi
 
-#yum -y install epel-release -y
-#yum --enablerepo=epel -y install sshpass -y
+#Check if EPEL is installed, if not... install
+if ! rpm -qa | grep -qw epel-release; then
+    yum -y install epel-release -y
+fi
+
+#Check if sshpass is installed, if not... install
+if ! rpm -qa | grep -qw sshpass; then
+    yum --enablerepo=epel -y install sshpass -y
+fi
 
 #Generating the new /etc/ssh/sshd_config
 echo -e "Backup /etc/ssh/sshd_config\n"
