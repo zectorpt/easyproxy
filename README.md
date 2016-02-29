@@ -7,7 +7,7 @@ If you already have a VPS, you can use it. If not, you can buy one for less than
 Remote server:<br>
 ssh to vps as root<br>
 git clone https://github.com/zectorpt/easyproxy.git<br>
-cd easyproxy
+cd easyproxy/server/
 ./SETUP.sh<br>
 
 Local box:<br>
