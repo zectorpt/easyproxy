@@ -14,6 +14,6 @@ Pre requirements:<br><br>
 sshpass<br>
 
 #How to do easily
+
 Remote server:
 git clone REPO
-
