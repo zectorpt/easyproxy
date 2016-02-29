@@ -20,6 +20,13 @@ if ! rpm -qa | grep -qw sshpass; then
     yum --enablerepo=epel -y install sshpass -y
 fi
 
+#Install X and some stuff
+yum groupinstall "X Window System" "GNOME Desktop Environment" -y
+systemctl set-default graphical.target
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+sleep 1
+yum install ./google-chrome-stable_current_*.rpm -y
+
 #Generating the new /etc/ssh/sshd_config
 echo -e "Backup /etc/ssh/sshd_config\n"
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.old
