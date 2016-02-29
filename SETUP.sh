@@ -1,4 +1,10 @@
 #!/bin/bash
+clear
+echo -e "\nWelcome to EasyProxy Hatfield v0.1\n\nThis Proxy should be installed in a fresh Centos 7 server.\n"
+
+
+read -p "Do you want continue? (y/n) " RESP
+if [ "$RESP" = "y" ]; then
 #yum -y install epel-release -y
 #yum --enablerepo=epel -y install sshpass -y
 #Generating the new /etc/ssh/sshd_config
@@ -38,3 +44,7 @@ Host *
         SendEnv LC_IDENTIFICATION LC_ALL LANGUAGE
         SendEnv XMODIFIERS
 EOF
+else
+  echo "Quiting!"
+fi
+
