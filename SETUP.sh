@@ -26,12 +26,16 @@ systemctl set-default graphical.target
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 sleep 1
 yum install ./google-chrome-stable_current_*.rpm -y
+wget https://mirror.its.sfu.ca/mirror/CentOS-Third-Party/NSG/common/x86_64/AdbeRdr9.5.5-1_i486linux_enu.rpm
+sleep 1
+yum install common/x86_64/AdbeRdr9.5.5-1_i486linux_enu.rpm -y
+
 
 #Generating the new /etc/ssh/sshd_config
 echo -e "Backup /etc/ssh/sshd_config\n"
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.old
 echo -e "Generating new /etc/ssh/sshd_config\n"
-rm -f /tmp/sshd_config
+rm -f /etc/ssh/sshd_config
 sleep 1
 cat <<EOF >> /tmp/sshd_config
 Port 80
@@ -55,12 +59,12 @@ Subsystem       sftp    /usr/libexec/openssh/sftp-server" > /tmp/sshd_config
 EOF
 
 #Generating the new /etc/ssh/sshd_config
-echo -e "Backup /etc/ssh/sshd_config\n"
+echo -e "Backup /etc/ssh/ssh_config\n"
 cp /etc/ssh/ssh_config /etc/ssh/ssh_config.old
 echo -e "Generating new /etc/ssh/ssh_config\n"
 sleep 1
 rm -f /tmp/ssh_config
-cat <<EOF >> /tmp/ssh_config
+cat <<EOF >> /etc/ssh/ssh_config
 Host *
         GSSAPIAuthentication yes
         ForwardX11Trusted yes
@@ -72,4 +76,3 @@ EOF
 else
   echo "Quiting!"
 fi
-
