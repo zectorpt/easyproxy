@@ -1,6 +1,6 @@
 # Easy Proxy. How bypass your company security!
 
-If you have a VPS you can use it, if not, you can buy one for less than 2eur / month <br><br>
+If you already have a VPS, you can use it. If not, you can buy one for less than 2eur / month <br><br>
 
 On remote server (VPS):<br>
 1 - Disable apache<br>
@@ -13,7 +13,9 @@ On local machine:<br>
 Pre requirements:<br><br>
 sshpass<br>
 
-#How to do easily
+#How to do easily with auto configure
 
 Remote server:
-git clone REPO
+ssh to vps as root
+git clone https://github.com/zectorpt/easyproxy.git
+./configure.sh
