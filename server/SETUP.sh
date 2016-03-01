@@ -116,6 +116,10 @@ chmod 755 /home/trtcode/scripts/menu.sh
 #Restarting services
 service sshd restart
 
+#Cleaning rpm's
+echo -e "Cleaning RPM's\n"
+rm -f *rpm*
+
 echo -e "\n\e[31mReboot server to enter in runlevel 5. Reboot it and use the local scripts on your computer!\e[0m\n"
 else
   echo "Quiting!"
