@@ -41,11 +41,11 @@ sleep 1
 echo -e "\nInstalling Chrome.\n"
 sleep 2
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-yum install ./google-chrome-stable_current_*.rpm -y
+yum install ./google-chrome-stable_current_*.rpm -y --skip-broken
 echo -e "\nInstalling Adobe Acrobat.\n"
 sleep 2
 wget https://mirror.its.sfu.ca/mirror/CentOS-Third-Party/NSG/common/x86_64/AdbeRdr9.5.5-1_i486linux_enu.rpm
-yum localinstall AdbeRdr9.5.5-1_i486linux_enu.rpm -y
+yum localinstall AdbeRdr9.5.5-1_i486linux_enu.rpm -y --skip-broken
 echo -e "\nInstalling dialog.\n"
 sleep 2
 yum install dialog -y
