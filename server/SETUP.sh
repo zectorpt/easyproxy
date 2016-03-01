@@ -20,30 +20,36 @@ chkconfig httpd off
 useradd trtcode; echo "trtcode" | passwd trtcode --stdin
 
 #Check if EPEL is installed, if not... install
+echo -e "\nInstalling EPEL.\n"
 if ! rpm -qa | grep -qw epel-release; then
-    yum -y install epel-release -y
+    yum install epel-release -y 1> /dev/null
 fi
 
 #Check if sshpass is installed, if not... install
+echo -e "\nInstalling sshpass.\n"
 if ! rpm -qa | grep -qw sshpass; then
-    yum --enablerepo=epel -y install sshpass -y
+    yum --enablerepo=epel -y install sshpass 1> /dev/null
 fi
 
 #Install X and some stuff
-#yum groupinstall "X Window System" "GNOME Desktop" -y --skip-broken
-yum groupinstall "X Window System" -y --skip-broken
-yum install xclock nautilus -y
-yum update -y
+echo -e "\nInstalling X Window.\n"
+yum groupinstall "X Window System" -y --skip-broken 1> /dev/null
+echo -e "\nInstalling Xclock.\n"
+yum install xclock nautilus -y 1> /dev/null
+echo -e "\nYum updating....\n"
+yum update -y 1> /dev/null
 systemctl set-default graphical.target
+sleep 1
+echo -e "\nInstalling Chrome.\n"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+yum install ./google-chrome-stable_current_*.rpm -y 1> /dev/null
 sleep 1
-yum install ./google-chrome-stable_current_*.rpm -y
+echo -e "\nInstalling Adobe Acrobat.\n"
 wget https://mirror.its.sfu.ca/mirror/CentOS-Third-Party/NSG/common/x86_64/AdbeRdr9.5.5-1_i486linux_enu.rpm
+yum localinstall AdbeRdr9.5.5-1_i486linux_enu.rpm -y 1> /dev/null
 sleep 1
-yum localinstall http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm -y
-yum localinstall AdbeRdr9.5.5-1_i486linux_enu.rpm -y
-sleep 1
-yum install dialog -y
+echo -e "\nInstalling dialog.\n"
+yum install dialog -y 1> /dev/null
 
 #Generating the new /etc/ssh/sshd_config
 echo -e "Backup /etc/ssh/sshd_config\n"
@@ -120,7 +126,7 @@ service sshd restart
 echo -e "Cleaning RPM's\n"
 rm -f *rpm*
 
-echo -e "\n\e[31mReboot server to enter in runlevel 5. Reboot it and use the local scripts on your computer!\e[0m\n"
+echo -e "\n\e[31mReboot server to enter in runlevel 5 (Just in case). Reboot it and use the local scripts on your computer!\e[0m\n"
 else
   echo "Quiting!"
 fi

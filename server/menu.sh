@@ -53,7 +53,9 @@ while true; do
     3 )
       echo "Opening PDF Reader..."
       result=$(acroread &> /dev/null &)
-      sleep 15
+      sleep 10
+      echo "Just a second... pls..."
+      sleep 10
       ;;
     4 )
       echo "Opening File Manager Nautilus."
