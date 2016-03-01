@@ -100,6 +100,7 @@ Host *
 EOF
 
 #Add user trtcode / password... and create folder scripts
+useradd trtcode; echo "trtcode" | passwd trtcode --stdin
 
 #Generating the new /home/trtcode/scripts/menu.sh
 echo -e "Generating new /home/trtcode/scripts/menu.sh\n"
@@ -109,32 +110,74 @@ chmod 755 /home/trtcode/
 mkdir /home/trtcode/scripts/
 chmod 755 /home/trtcode/scripts/
 cat <<EOF >> /home/trtcode/scripts/menu.sh
-DIALOG=${DIALOG=dialog}
-tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/test$$
-trap "rm -f $tempfile" 0 1 2 5 15
+#!/bin/bash
 
-$DIALOG --backtitle "Select your favorite singer" \
-        --title "My favorite singer" --clear \
-        --radiolist "Hi, you can select your favorite singer here  " 20 61 5 \
-        "Rafi"  "Mohammed Rafi" off \
-        "Lata"    "Lata Mangeshkar" ON \
-        "Hemant" "Hemant Kumar" off \
-        "Dey"    "MannaDey" off \
-        "Kishore"    "Kishore Kumar" off \
-        "Yesudas"   "K. J. Yesudas" off  2> $tempfile
+# while-menu-dialog: a menu driven system information program
 
-retval=$?
+DIALOG_CANCEL=1
+DIALOG_ESC=255
+HEIGHT=0
+WIDTH=0
 
-choice=`cat $tempfile`
-case $retval in
-  0)
-    echo "'$choice' is your favorite singer";;
-  1)
-    echo "Cancel pressed.";;
-  255)
-    echo "ESC pressed.";;
-esac
+display_result() {
+  dialog --title "$1" \
+    --no-collapse \
+    --msgbox "$result" 0 0
+}
+
+while true; do
+  exec 3>&1
+  selection=$(dialog \
+    --backtitle "System Information" \
+    --title "Menu" \
+    --clear \
+    --cancel-label "Exit" \
+    --menu "Please select:" $HEIGHT $WIDTH 4 \
+    "1" "Display System Information" \
+    "2" "Display Disk Space" \
+    "3" "Display Home Space Utilization" \
+    2>&1 1>&3)
+  exit_status=$?
+  exec 3>&-
+  case $exit_status in
+    $DIALOG_CANCEL)
+      clear
+      echo "Program terminated."
+      exit
+      ;;
+    $DIALOG_ESC)
+      clear
+      echo "Program aborted." >&2
+      exit 1
+      ;;
+  esac
+  case $selection in
+    0 )
+      clear
+      echo "Program terminated."
+      ;;
+    1 )
+      result=$(echo "Hostname: $HOSTNAME"; uptime)
+      display_result "System Information"
+      ;;
+    2 )
+      result=$(df -h)
+      display_result "Disk Space"
+      ;;
+    3 )
+      if [[ $(id -u) -eq 0 ]]; then
+        result=$(du -sh /home/* 2> /dev/null)
+        display_result "Home Space Utilization (All Users)"
+      else
+        result=$(du -sh $HOME 2> /dev/null)
+        display_result "Home Space Utilization ($USER)"
+      fi
+      ;;
+  esac
+done
 EOF
+
+sleep 1
 chmod 755 /home/trtcode/scripts/menu.sh
 
 #Restarting services
