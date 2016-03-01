@@ -30,6 +30,8 @@ wget https://mirror.its.sfu.ca/mirror/CentOS-Third-Party/NSG/common/x86_64/AdbeR
 sleep 1
 yum localinstall http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm -y
 yum localinstall AdbeRdr9.5.5-1_i486linux_enu.rpm -y
+sleep 1
+yum install dialog -y
 
 #Generating the new /etc/ssh/sshd_config
 echo -e "Backup /etc/ssh/sshd_config\n"
@@ -58,6 +60,21 @@ AcceptEnv XMODIFIERS
 Subsystem       sftp    /usr/libexec/openssh/sftp-server" > /tmp/sshd_config
 EOF
 
+#Generating bashrc
+echo -e "Backup /home/trtcode/.bashrc\n"
+cp /home/trtcode/.bashrc /tmp/bashrc.old
+echo -e "Generating new /home/trtcode/.bashrc\n"
+sleep 1
+rm -f /home/trtcode/.bashrc
+cat <<EOF >> /home/trtcode/.bashrc
+# .bashrc
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+clear
+sh /home/trtcode/scripts/menu.sh
+EOF
+
 #Generating the new /etc/ssh/sshd_config
 echo -e "Backup /etc/ssh/ssh_config\n"
 cp /etc/ssh/ssh_config /etc/ssh/ssh_config.old
@@ -73,6 +90,40 @@ Host *
         SendEnv LC_IDENTIFICATION LC_ALL LANGUAGE
         SendEnv XMODIFIERS
 EOF
+
+#Generating the new /home/trtcode/scripts/menu.sh
+echo -e "Generating new /home/trtcode/scripts/menu.sh\n"
+sleep 1
+rm -f /home/trtcode/scripts/menu.sh
+cat <<EOF >> /home/trtcode/scripts/menu.sh
+ALOG=${DIALOG=dialog}
+tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/test$$
+trap "rm -f $tempfile" 0 1 2 5 15
+
+$DIALOG --backtitle "Select your favorite singer" \
+        --title "My favorite singer" --clear \
+        --radiolist "Hi, you can select your favorite singer here  " 20 61 5 \
+        "Rafi"  "Mohammed Rafi" off \
+        "Lata"    "Lata Mangeshkar" ON \
+        "Hemant" "Hemant Kumar" off \
+        "Dey"    "MannaDey" off \
+        "Kishore"    "Kishore Kumar" off \
+        "Yesudas"   "K. J. Yesudas" off  2> $tempfile
+
+retval=$?
+
+choice=`cat $tempfile`
+case $retval in
+  0)
+    echo "'$choice' is your favorite singer";;
+  1)
+    echo "Cancel pressed.";;
+  255)
+    echo "ESC pressed.";;
+esac
+EOF
+chmod 755 /home/trtcode/scripts/menu.sh
+
 else
   echo "Quiting!"
 fi
