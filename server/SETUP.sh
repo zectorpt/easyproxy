@@ -10,6 +10,13 @@ echo -e "\nThis script must be run as root. Login as root and test again.\n" 2>&
 exit 1
 fi
 
+#Disable iptables and apache
+service iptables stop
+chkconfig iptables off
+service httpd stop
+chkconfig httpd off
+
+
 #Check if EPEL is installed, if not... install
 if ! rpm -qa | grep -qw epel-release; then
     yum -y install epel-release -y
@@ -21,7 +28,8 @@ if ! rpm -qa | grep -qw sshpass; then
 fi
 
 #Install X and some stuff
-yum groupinstall "X Window System" "GNOME Desktop" -y --skip-broken
+#yum groupinstall "X Window System" "GNOME Desktop" -y --skip-broken
+yum groupinstall "X Window System" -y --skip-broken
 systemctl set-default graphical.target
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 sleep 1
@@ -91,12 +99,17 @@ Host *
         SendEnv XMODIFIERS
 EOF
 
+#Add user trtcode / password... and create folder scripts
+
 #Generating the new /home/trtcode/scripts/menu.sh
 echo -e "Generating new /home/trtcode/scripts/menu.sh\n"
 sleep 1
 rm -f /home/trtcode/scripts/menu.sh
+chmod 755 /home/trtcode/
+mkdir /home/trtcode/scripts/
+chmod 755 /home/trtcode/scripts/
 cat <<EOF >> /home/trtcode/scripts/menu.sh
-ALOG=${DIALOG=dialog}
+DIALOG=${DIALOG=dialog}
 tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/test$$
 trap "rm -f $tempfile" 0 1 2 5 15
 
@@ -123,6 +136,9 @@ case $retval in
 esac
 EOF
 chmod 755 /home/trtcode/scripts/menu.sh
+
+#Restarting services
+service sshd restart
 
 else
   echo "Quiting!"
