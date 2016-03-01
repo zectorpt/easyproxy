@@ -61,13 +61,13 @@ ChallengeResponseAuthentication no
 GSSAPIAuthentication yes
 GSSAPICleanupCredentials no
 UsePAM yes
-X11Forwarding yes
+X11Forwarding no
 UsePrivilegeSeparation sandbox          # Default for new installations.
 AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
 AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
 AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
 AcceptEnv XMODIFIERS
-Subsystem       sftp    /usr/libexec/openssh/sftp-server" > /tmp/sshd_config
+Subsystem       sftp    /usr/libexec/openssh/sftp-server
 EOF
 
 #Generating bashrc
