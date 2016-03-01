@@ -32,6 +32,8 @@ fi
 #Install X and some stuff
 #yum groupinstall "X Window System" "GNOME Desktop" -y --skip-broken
 yum groupinstall "X Window System" -y --skip-broken
+yum install xclock -y
+yum update -y
 systemctl set-default graphical.target
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 sleep 1
@@ -61,7 +63,7 @@ ChallengeResponseAuthentication no
 GSSAPIAuthentication yes
 GSSAPICleanupCredentials no
 UsePAM yes
-X11Forwarding no
+X11Forwarding yes
 UsePrivilegeSeparation sandbox          # Default for new installations.
 AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
 AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT

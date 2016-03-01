@@ -17,7 +17,7 @@ while true; do
     --cancel-label "Exit" \
     --menu "Please select:" $HEIGHT $WIDTH 4 \
     "1" "Xclock - Unix Clock" \
-    "2" "Display Disk Space" \
+    "2" "Google Chrome" \
     "3" "Display Home Space Utilization" \
     2>&1 1>&3)
   exit_status=$?
@@ -41,13 +41,13 @@ while true; do
       ;;
     1 )
       echo "Best way to test X-Window"
-      result=$(xclock 2> /dev/null &)
+      result=$(xclock &> /dev/null &)
       sleep 3
       ;;
     2 )
       echo "Opening Google Chrome... Is a little bit slow... Wait!"
-      result=$(google-chrome-stable 2> /dev/null &)
-      sleep 15
+      result=$(google-chrome-stable &> /dev/null &)
+      sleep 15      
       ;;
     3 )
       if [[ $(id -u) -eq 0 ]]; then
