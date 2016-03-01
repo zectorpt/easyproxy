@@ -111,14 +111,10 @@ mkdir /home/trtcode/scripts/
 chmod 755 /home/trtcode/scripts/
 cat <<EOF >> /home/trtcode/scripts/menu.sh
 #!/bin/bash
-
-# while-menu-dialog: a menu driven system information program
-
 DIALOG_CANCEL=1
 DIALOG_ESC=255
 HEIGHT=0
 WIDTH=0
-
 display_result() {
   dialog --title "$1" \
     --no-collapse \
@@ -133,7 +129,7 @@ while true; do
     --clear \
     --cancel-label "Exit" \
     --menu "Please select:" $HEIGHT $WIDTH 4 \
-    "1" "Display System Information" \
+    "1" "Xclock - Unix Clock" \
     "2" "Display Disk Space" \
     "3" "Display Home Space Utilization" \
     2>&1 1>&3)
@@ -157,12 +153,14 @@ while true; do
       echo "Program terminated."
       ;;
     1 )
-      result=$(echo "Hostname: $HOSTNAME"; uptime)
-      display_result "System Information"
+      echo "Best way to test X-Window"
+      result=$(xclock 2> /dev/null &)
+      sleep 3
       ;;
     2 )
-      result=$(df -h)
-      display_result "Disk Space"
+      echo "Opening Google Chrome... Is a little bit slow... Wait!"
+      result=$(google-chrome-stable 2> /dev/null &)
+      sleep 15
       ;;
     3 )
       if [[ $(id -u) -eq 0 ]]; then
