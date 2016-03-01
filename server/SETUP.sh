@@ -116,8 +116,7 @@ chmod 755 /home/trtcode/scripts/menu.sh
 #Restarting services
 service sshd restart
 
-echo -e "\nServer need to be reboot to enter in runlevel 5. Reboot it and use the local scripts on your computer!\n"
-
+echo -e "\n\e[31mReboot server to enter in runlevel 5. Reboot it and use the local scripts on your computer!\e[0m\n"
 else
   echo "Quiting!"
 fi

@@ -14,11 +14,12 @@ while true; do
     --backtitle "System Information" \
     --title "Menu" \
     --clear \
-    --cancel-label "Exit" \
+    --cancel-label "Drop to Shell" \
     --menu "Please select:" $HEIGHT $WIDTH 4 \
     "1" "Xclock - Unix Clock" \
     "2" "Google Chrome" \
-    "3" "Display Home Space Utilization" \
+    "3" "PDF Reader" \
+    "4" "File Manager Nautilus" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -50,13 +51,14 @@ while true; do
       sleep 15      
       ;;
     3 )
-      if [[ $(id -u) -eq 0 ]]; then
-        result=$(du -sh /home/* 2> /dev/null)
-        display_result "Home Space Utilization (All Users)"
-      else
-        result=$(du -sh $HOME 2> /dev/null)
-        display_result "Home Space Utilization ($USER)"
-      fi
+      echo "Opening PDF Reader..."
+      result=$(acroread &> /dev/null &)
+      sleep 15
+      ;;
+    4 )
+      echo "Opening File Manager Nautilus."
+      result=$(nautilus &> /dev/null &)
+      sleep 5
       ;;
   esac
 done
