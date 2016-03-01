@@ -52,7 +52,7 @@ yum install dialog -y
 
 #Generating the new /etc/ssh/sshd_config
 echo -e "Backup /etc/ssh/sshd_config\n"
-sleep 
+sleep 1 
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.old
 echo -e "Generating new /etc/ssh/sshd_config\n"
 sleep 2
