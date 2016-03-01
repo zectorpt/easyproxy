@@ -32,7 +32,7 @@ fi
 #Install X and some stuff
 #yum groupinstall "X Window System" "GNOME Desktop" -y --skip-broken
 yum groupinstall "X Window System" -y --skip-broken
-yum install xclock -y
+yum install xclock nautilus -y
 yum update -y
 systemctl set-default graphical.target
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
