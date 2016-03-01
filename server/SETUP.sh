@@ -16,6 +16,8 @@ chkconfig iptables off
 service httpd stop
 chkconfig httpd off
 
+#Add user trtcode / password... and create folder scripts
+useradd trtcode; echo "trtcode" | passwd trtcode --stdin
 
 #Check if EPEL is installed, if not... install
 if ! rpm -qa | grep -qw epel-release; then
@@ -98,9 +100,6 @@ Host *
         SendEnv LC_IDENTIFICATION LC_ALL LANGUAGE
         SendEnv XMODIFIERS
 EOF
-
-#Add user trtcode / password... and create folder scripts
-useradd trtcode; echo "trtcode" | passwd trtcode --stdin
 
 #Generating the new /home/trtcode/scripts/menu.sh
 echo -e "Generating new /home/trtcode/scripts/menu.sh\n"
