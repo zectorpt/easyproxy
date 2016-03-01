@@ -22,34 +22,34 @@ useradd trtcode; echo "trtcode" | passwd trtcode --stdin
 #Check if EPEL is installed, if not... install
 echo -e "\nInstalling EPEL.\n"
 if ! rpm -qa | grep -qw epel-release; then
-    yum install epel-release -y 1> /dev/null
+    yum install epel-release -y
 fi
 
 #Check if sshpass is installed, if not... install
 echo -e "\nInstalling sshpass.\n"
 if ! rpm -qa | grep -qw sshpass; then
-    yum --enablerepo=epel -y install sshpass 1> /dev/null
+    yum --enablerepo=epel -y install sshpass
 fi
 
 #Install X and some stuff
 echo -e "\nInstalling X Window.\n"
-yum groupinstall "X Window System" -y --skip-broken 1> /dev/null
+yum groupinstall "X Window System" -y --skip-broken
 echo -e "\nInstalling Xclock.\n"
-yum install xclock nautilus -y 1> /dev/null
+yum install xclock nautilus -y
 echo -e "\nYum updating....\n"
-yum update -y 1> /dev/null
+yum update -y
 systemctl set-default graphical.target
 sleep 1
 echo -e "\nInstalling Chrome.\n"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-yum install ./google-chrome-stable_current_*.rpm -y 1> /dev/null
+yum install ./google-chrome-stable_current_*.rpm -y
 sleep 1
 echo -e "\nInstalling Adobe Acrobat.\n"
 wget https://mirror.its.sfu.ca/mirror/CentOS-Third-Party/NSG/common/x86_64/AdbeRdr9.5.5-1_i486linux_enu.rpm
-yum localinstall AdbeRdr9.5.5-1_i486linux_enu.rpm -y 1> /dev/null
+yum localinstall AdbeRdr9.5.5-1_i486linux_enu.rpm -y
 sleep 1
 echo -e "\nInstalling dialog.\n"
-yum install dialog -y 1> /dev/null
+yum install dialog -y
 
 #Generating the new /etc/ssh/sshd_config
 echo -e "Backup /etc/ssh/sshd_config\n"
