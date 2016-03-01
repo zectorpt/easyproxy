@@ -13,12 +13,14 @@ Min 1GB RAM
 Remote server:<br>
 ssh to vps as root<br>
 git clone https://github.com/zectorpt/easyproxy.git<br>
-cd easyproxy/server/
+cd easyproxy/server/<br>
 ./SETUP.sh<br>
 
-Local box:<br>
+In your local computer (Linux):<br>
 Insert user / password and IP of the remote server in config.cfg<br>
 
+In your local computer (Windows):<br>
+Insert user / password and IP of the remote server in config.cfg<br>
 putty.exe -P 80 root@IP -pw PASS
 
 -----------------------------------------------------------------------------
