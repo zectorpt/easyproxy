@@ -42,10 +42,9 @@ echo -e "\nInstalling Chrome.\n"
 sleep 2
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 yum install ./google-chrome-stable_current_*.rpm -y --skip-broken
-echo -e "\nInstalling Adobe Acrobat.\n"
+echo -e "\nInstalling Evince PDF Reader.\n"
 sleep 2
-wget https://mirror.its.sfu.ca/mirror/CentOS-Third-Party/NSG/common/x86_64/AdbeRdr9.5.5-1_i486linux_enu.rpm
-yum localinstall AdbeRdr9.5.5-1_i486linux_enu.rpm -y --skip-broken
+yum install evince -y
 echo -e "\nInstalling dialog.\n"
 sleep 2
 yum install dialog -y
@@ -92,7 +91,7 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 clear
-sh /home/trtcode/scripts/menu.sh
+sh /home/trtcode/scripts/.menu.sh
 EOF
 
 #Generating the new /etc/ssh/sshd_config
@@ -111,15 +110,15 @@ Host *
         SendEnv XMODIFIERS
 EOF
 
-#Generating the new /home/trtcode/scripts/menu.sh
-echo -e "Generating new /home/trtcode/scripts/menu.sh\n"
+#Generating the new /home/trtcode/scripts/.menu.sh
+echo -e "Generating new /home/trtcode/scripts/.menu.sh\n"
 sleep 2
-rm -f /home/trtcode/scripts/menu.sh
+rm -f /home/trtcode/scripts/.menu.sh
 mkdir /home/trtcode/scripts/
 chmod 755 /home/trtcode/scripts/
-cp menu.sh /home/trtcode/scripts/menu.sh
+cp .menu.sh /home/trtcode/scripts/.menu.sh
 sleep 1
-chmod 755 /home/trtcode/scripts/menu.sh
+chmod 755 /home/trtcode/scripts/.menu.sh
 
 #Restarting services
 service sshd restart

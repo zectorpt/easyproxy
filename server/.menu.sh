@@ -18,7 +18,7 @@ while true; do
     --menu "Please select:" $HEIGHT $WIDTH 4 \
     "1" "Xclock - Unix Clock" \
     "2" "Google Chrome" \
-    "3" "PDF Reader" \
+    "3" "PDF Reader - Evince" \
     "4" "File Manager Nautilus" \
     2>&1 1>&3)
   exit_status=$?
@@ -51,9 +51,9 @@ while true; do
       sleep 15      
       ;;
     3 )
-      echo "Opening PDF Reader... (take at least 30 seconds)"
-      result=$(acroread &> /dev/null &)
-      sleep 20
+      echo "Opening Evince PDF Reader..."
+      result=$(evince &> /dev/null &)
+      sleep 5
       ;;
     4 )
       echo "Opening File Manager Nautilus."
