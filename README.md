@@ -41,6 +41,9 @@ A: It's not free. You should send me an email saying Thank you!<br>
 Q: I really need help, who can help me?<br>
 A: Send me an email.<br>
 
+Q: This is a closed project? It's possible improve?
+A: YES! The menu and the applications installed can be much more! Try more applications and add them to the menu!
+
 -----------------------------------------------------------------------------
 
 If you like it, star my repo and don't delete my email from source code<br />
