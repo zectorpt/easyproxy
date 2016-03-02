@@ -20,23 +20,23 @@ Insert the IP of the remote server in config.cfg<br>
 
 In your local computer (Windows):<br>
 Insert IP of the remote server in connect.bat<br>
-putty.exe -P 80 -X root@IP -pw PASS
+putty.exe -P 80 -X root@IP -pw PASS<br>
 
-FAQ:
-Q: My company block the port 80, how can I be free?
-A: Easy! Change the file server/SETUP.sh on line 61. Change port 80 to the port that you want. Remember that port should be open in your company. Usually port 80 is open, but... if not, chose another.
+FAQ:<br>
+Q: My company block the port 80, how can I be free?<br>
+A: Easy! Change the file server/SETUP.sh on line 61. Change port 80 to the port that you want. Remember that port should be open in your company. Usually port 80 is open, but... if not, chose another.<br>
 
-Q: How this works? Software is installed in my company LAPTOP?
-A: No, nothing is installed in your Laptop. Everything is in the external VPS. There are no cookies or way to trace. All software is running on the VPS. After close Easy Proxy Hatfield your PC is clean!
+Q: How this works? Software is installed in my company LAPTOP?<br>
+A: No, nothing is installed in your Laptop. Everything is in the external VPS. There are no cookies or way to trace. All software is running on the VPS. After close Easy Proxy Hatfield your PC is clean!<br>
 
-Q: Where can I buy a VPS?
-A: I don't have any business related with VPS's, but there are some VPS's too cheap. For this propose I use www.firstheberg.com
+Q: Where can I buy a VPS?<br>
+A: I don't have any business related with VPS's, but there are some VPS's too cheap. For this propose I use www.firstheberg.com<br>
 
-Q: I dont Like Centos/Redhat. What I can do?
-A: If, for any reason you need to use any other distro, edit SETUP.sh and change the YUM by APTITUDE... for example. There are same changes that you should do in the SSH configuration.
+Q: I dont Like Centos/Redhat. What I can do?<br>
+A: If, for any reason you need to use any other distro, edit SETUP.sh and change the YUM by APTITUDE... for example. There are same changes that you should do in the SSH configuration.<br>
 
-Q: It is free? How much it will cost me?
-A: It's not free. You should send me an email saying Thank you!
+Q: It is free? How much it will cost me?<br>
+A: It's not free. You should send me an email saying Thank you!<br>
 
 -----------------------------------------------------------------------------
 
