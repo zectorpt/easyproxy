@@ -32,11 +32,14 @@ A: No, nothing is installed in your Laptop. Everything is in the external VPS. T
 Q: Where can I buy a VPS?<br>
 A: I don't have any business related with VPS's, but there are some VPS's too cheap. For this propose I use www.firstheberg.com<br>
 
-Q: I dont Like Centos/Redhat. What I can do?<br>
+Q: I don't Like Centos/Redhat. What can I do?<br>
 A: If, for any reason you need to use any other distro, edit SETUP.sh and change the YUM by APTITUDE... for example. There are same changes that you should do in the SSH configuration.<br>
 
 Q: It is free? How much it will cost me?<br>
 A: It's not free. You should send me an email saying Thank you!<br>
+
+Q: I really need help, who can help me?<br>
+A: Send me an email.<br>
 
 -----------------------------------------------------------------------------
 
