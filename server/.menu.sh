@@ -1,4 +1,6 @@
 #!/bin/bash
+# josemedeirosdealmeida@gmail.com
+# Jose Almeida
 DIALOG_CANCEL=1
 DIALOG_ESC=255
 HEIGHT=0
