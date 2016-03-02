@@ -1,6 +1,6 @@
 #!/bin/bash
 source config.cfg
-echo "Origem: (exemplo /tmp/file.rpm)"
+echo "Origem: (exemplo /home/trtcode/file.pdf)"
 read remote
 echo "Destino: (exemplo /tmp/)"
 read local

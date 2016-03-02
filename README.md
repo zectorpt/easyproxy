@@ -21,7 +21,7 @@ Insert user / password and IP of the remote server in config.cfg<br>
 
 In your local computer (Windows):<br>
 Insert user / password and IP of the remote server in config.cfg<br>
-putty.exe -P 80 root@IP -pw PASS
+putty.exe -P 80 -X root@IP -pw PASS
 
 -----------------------------------------------------------------------------
 
