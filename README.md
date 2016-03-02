@@ -1,4 +1,4 @@
-## Easy Proxy. How bypass your company security!
+##How bypass your company security?
 ###Welcome to Easy Proxy Hatfield
 
 If you already have a VPS, you can use it. If not, you can buy one for less than 2eur / month <br><br>
@@ -27,12 +27,16 @@ Q: My company block the port 80, how can I be free?
 A: Easy! Change the file server/SETUP.sh on line 61. Change port 80 to the port that you want. Remember that port should be open in your company. Usually port 80 is open, but... if not, chose another.
 
 Q: How this works? Software is installed in my company LAPTOP?
-A: No, nothing is installed in your Laptop. Everything is in the external VPS. There are no cookies or way to trace. All software are running in the VPS. After close Easy Proxy Hatfield your PC is clean!
+A: No, nothing is installed in your Laptop. Everything is in the external VPS. There are no cookies or way to trace. All software is running on the VPS. After close Easy Proxy Hatfield your PC is clean!
 
 Q: Where can I buy a VPS?
-A: I dont have any business related with VPS's, but there are some VPS's in the market extremely cheapests. For this propose I use www.firstheberg.com
+A: I don't have any business related with VPS's, but there are some VPS's too cheap. For this propose I use www.firstheberg.com
 
+Q: I dont Like Centos/Redhat. What I can do?
+A: If, for any reason you need to use any other distro, edit SETUP.sh and change the YUM by APTITUDE... for example. There are same changes that you should do in the SSH configuration.
 
+Q: It is free? How much it will cost me?
+A: It's not free. You should send me an email saying Thank you!
 
 -----------------------------------------------------------------------------
 
