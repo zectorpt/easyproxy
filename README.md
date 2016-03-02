@@ -23,6 +23,10 @@ In your local computer (Windows):<br>
 Insert user / password and IP of the remote server in config.cfg<br>
 putty.exe -P 80 -X root@IP -pw PASS
 
+FAQ:
+My company block the port 80, how can I be free?
+
+
 -----------------------------------------------------------------------------
 
 If you like it, star my repo and don't delete my email from source code<br />
