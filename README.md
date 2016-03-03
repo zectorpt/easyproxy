@@ -3,9 +3,9 @@
 
 If you already have a VPS, you can use it. If not, you can buy one for less than 2eur / month <br><br>
 
-Pre requirements:
-Centos 7
-Min 1GB RAM
+Pre requirements:<br>
+Centos 7<br>
+Min 1GB RAM<br>
 
 Remote server:<br>
 ssh to vps as root<br>
