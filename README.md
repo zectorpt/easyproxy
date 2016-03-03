@@ -1,5 +1,5 @@
-##Welcome to Easy Proxy Hatfield
-###How bypass your company security?
+##Welcome to Easy Proxy Hatfield!
+###How bypass your company security? Your contry deny some sites/IP's?
 
 If you already have a VPS, you can use it. If not, you can buy one for less than 2eur / month <br><br>
 
