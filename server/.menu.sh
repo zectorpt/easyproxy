@@ -67,7 +67,7 @@ while true; do
     5 )
       echo "Opening Xeyes - useless..."
       result=$(xeyes &> /dev/null &)
-      sleep 4
+      sleep 3
       ;;
   esac
 done
