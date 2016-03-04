@@ -5,6 +5,7 @@ DIALOG_CANCEL=1
 DIALOG_ESC=255
 HEIGHT=0
 WIDTH=0
+URL="$(hostname --fqdn)"
 display_result() {
   dialog --title "$1" \
     --no-collapse \
@@ -13,7 +14,7 @@ display_result() {
 while true; do
   exec 3>&1
   selection=$(dialog \
-    --backtitle "Easy Proxy Hatfield 2016" \
+    --backtitle "Easy Proxy Hatfield 2016   -   To download your stuff http://$URL:443" \
     --title "Menu" \
     --clear \
     --cancel-label "Drop to Shell" \
