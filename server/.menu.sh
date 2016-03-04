@@ -64,7 +64,7 @@ while true; do
       sleep 5
       ;;
     5 )
-      echo "Opening Xeyes - useful..."
+      echo "Opening Xeyes - useless..."
       result=$(xeyes &> /dev/null &)
       sleep 4
       ;;

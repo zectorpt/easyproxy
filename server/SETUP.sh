@@ -12,11 +12,12 @@ echo -e "\nThis script must be run as root. Login as root and test again.\n" 2>&
 exit 1
 fi
 
-#Disable iptables and apache
+#Disable iptables
 service iptables stop
 chkconfig iptables off
+
+#Stoping Apache
 service httpd stop
-chkconfig httpd off
 
 #Add user trtcode / password... and create folder scripts
 useradd trtcode; echo "trtcode" | passwd trtcode --stdin
@@ -112,6 +113,64 @@ Host *
         SendEnv XMODIFIERS
 EOF
 
+#Generating the new /etc/httpd/conf/httpd.conf
+echo -e "Backup /etc/httpd/conf/httpd.conf\n"
+cp /etc/ssh/ssh_config /etc/ssh/ssh_config.old
+echo -e "Generating new /etc/httpd/conf/httpd.conf\n"
+sleep 2
+rm -f /etc/httpd/conf/httpd.conf
+cat <<EOF >> /etc/httpd/conf/httpd.conf
+ServerRoot "/etc/httpd"
+Listen 443
+Include conf.modules.d/*.conf
+User apache
+Group apache
+ServerAdmin root@localhost
+<Directory />
+    AllowOverride none
+    Require all denied
+</Directory>
+DocumentRoot "/home/trtcode/Downloads"
+<Directory "/home/trtcode/Downloads">
+    AllowOverride None
+    Require all granted
+</Directory>
+<Directory "/home/trtcode/Downloads">
+    Options +Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>
+<IfModule dir_module>
+    DirectoryIndex index.html
+</IfModule>
+<Files ".ht*">
+    Require all denied
+</Files>
+ErrorLog "logs/error_log"
+LogLevel warn
+<IfModule log_config_module>
+    LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+    LogFormat "%h %l %u %t \"%r\" %>s %b" common
+    <IfModule logio_module>
+      LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
+    </IfModule>
+    CustomLog "logs/access_log" combined
+</IfModule>
+<IfModule mime_module>
+    TypesConfig /etc/mime.types
+    AddType application/x-compress .Z
+    AddType application/x-gzip .gz .tgz
+    AddType text/html .shtml
+    AddOutputFilter INCLUDES .shtml
+</IfModule>
+AddDefaultCharset UTF-8
+<IfModule mime_magic_module>
+    MIMEMagicFile conf/magic
+</IfModule>
+EnableSendfile on
+IncludeOptional conf.d/*.conf
+EOF
+
 #Generating the new /home/trtcode/scripts/.menu.sh
 echo -e "Generating new /home/trtcode/scripts/.menu.sh\n"
 sleep 2
@@ -124,6 +183,8 @@ chmod 755 /home/trtcode/scripts/.menu.sh
 
 #Restarting services
 service sshd restart
+service httpd restart
+chkconfig httpd on
 
 #Cleaning rpm's
 echo -e "Cleaning RPM's\n"
