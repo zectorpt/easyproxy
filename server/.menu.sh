@@ -13,7 +13,7 @@ display_result() {
 while true; do
   exec 3>&1
   selection=$(dialog \
-    --backtitle "System Information" \
+    --backtitle "Easy Proxy Hatfield 2016" \
     --title "Menu" \
     --clear \
     --cancel-label "Drop to Shell" \
