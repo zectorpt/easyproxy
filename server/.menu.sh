@@ -22,6 +22,7 @@ while true; do
     "2" "Google Chrome" \
     "3" "PDF Reader - Evince" \
     "4" "File Manager Nautilus" \
+    "5" "Xeyes - Just to play..." \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -61,6 +62,11 @@ while true; do
       echo "Opening File Manager Nautilus."
       result=$(nautilus &> /dev/null &)
       sleep 5
+      ;;
+    5 )
+      echo "Opening Xeyes - useful..."
+      result=$(xeyes &> /dev/null &)
+      sleep 4
       ;;
   esac
 done
