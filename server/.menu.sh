@@ -17,7 +17,7 @@ while true; do
     --title "Menu" \
     --clear \
     --cancel-label "Drop to Shell" \
-    --menu "Please select:" $HEIGHT $WIDTH 4 \
+    --menu "Please select:" $HEIGHT $WIDTH 5 \
     "1" "Xclock - Unix Clock" \
     "2" "Google Chrome" \
     "3" "PDF Reader - Evince" \
