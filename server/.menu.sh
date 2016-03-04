@@ -24,7 +24,7 @@ while true; do
     "3" "PDF Reader - Evince" \
     "4" "File Manager Nautilus" \
     "5" "Xeyes - Just to play..." \
-    "6" "Xcalc" \
+    "6" "Xcalc - Calculator" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-

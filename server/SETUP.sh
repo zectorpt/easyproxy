@@ -2,7 +2,7 @@
 # josemedeirosdealmeida@gmail.com
 # Jose Almeida
 clear
-echo -e "\n\e[31mWelcome to EasyProxy Hatfield v0.1\e[0m\n\nThis Proxy should be installed in a fresh Centos 7 server.\nAfter the instalation you only can ssh by port 80. \n\nThis setup will not delete any file, will rename it to .old.\n\n"
+echo -e "\n\e[31mWelcome to EasyProxy Hatfield 2016 v0.1\e[0m\n\nThis Proxy should be installed in a fresh Centos 7 server.\nAfter the instalation you only can ssh by port 80. \n\nThis setup will not delete any file, will rename it to .old.\n\n"
 read -p "Do you want continue? (y/n) " RESP
 if [ "$RESP" = "y" ]; then
 
