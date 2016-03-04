@@ -115,7 +115,7 @@ EOF
 
 #Generating the new /etc/httpd/conf/httpd.conf
 echo -e "Backup /etc/httpd/conf/httpd.conf\n"
-cp /etc/ssh/ssh_config /etc/ssh/ssh_config.old
+cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.old
 echo -e "Generating new /etc/httpd/conf/httpd.conf\n"
 sleep 2
 rm -f /etc/httpd/conf/httpd.conf
@@ -127,19 +127,9 @@ User apache
 Group apache
 ServerAdmin root@localhost
 <Directory />
-    AllowOverride none
-    Require all denied
+    Options +Indexes
 </Directory>
 DocumentRoot "/home/trtcode/Downloads"
-<Directory "/home/trtcode/Downloads">
-    AllowOverride None
-    Require all granted
-</Directory>
-<Directory "/home/trtcode/Downloads">
-    Options +Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-</Directory>
 <IfModule dir_module>
     DirectoryIndex index.html
 </IfModule>
@@ -171,6 +161,30 @@ EnableSendfile on
 IncludeOptional conf.d/*.conf
 EOF
 
+#Generating the new /etc/httpd/conf.d/welcome.conf
+echo -e "Backup /etc/httpd/conf.d/welcome.conf\n"
+cp /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.old
+echo -e "Generating new /etc/httpd/conf.d/welcome.conf\n"
+sleep 2
+rm -f /etc/httpd/conf.d/welcome.conf
+cat <<EOF >> /etc/httpd/conf.d/welcome.conf
+<LocationMatch "^/+$">
+    Options +Indexes
+    ErrorDocument 403 /.noindex.html
+</LocationMatch>
+
+<Directory /usr/share/httpd/noindex>
+    AllowOverride None
+    Require all granted
+</Directory>
+
+Alias /.noindex.html /usr/share/httpd/noindex/index.html
+Alias /noindex/css/bootstrap.min.css /usr/share/httpd/noindex/css/bootstrap.min.css
+Alias /noindex/css/open-sans.css /usr/share/httpd/noindex/css/open-sans.css
+Alias /images/apache_pb.gif /usr/share/httpd/noindex/images/apache_pb.gif
+Alias /images/poweredby.png /usr/share/httpd/noindex/images/poweredby.png
+EOF
+
 #Generating the new /home/trtcode/scripts/.menu.sh
 echo -e "Generating new /home/trtcode/scripts/.menu.sh\n"
 sleep 2
@@ -183,13 +197,16 @@ chmod 755 /home/trtcode/scripts/.menu.sh
 
 #Restarting services
 service sshd restart
-service httpd restart
+systemctl restart httpd
 chkconfig httpd on
 
 #Cleaning rpm's
 echo -e "Cleaning RPM's\n"
 sleep 2
 rm -f *rpm*
+
+#Permissions
+chmod 777 -R /home/trtcode/
 
 echo -e "\n\e[31mReboot server to enter in runlevel 5 (Just in case). Reboot it and use the local scripts on your computer!\e[0m\n"
 else
