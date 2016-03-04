@@ -24,6 +24,7 @@ while true; do
     "3" "PDF Reader - Evince" \
     "4" "File Manager Nautilus" \
     "5" "Xeyes - Just to play..." \
+    "6" "Xcalc" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -67,6 +68,11 @@ while true; do
     5 )
       echo "Opening Xeyes - useless..."
       result=$(xeyes &> /dev/null &)
+      sleep 3
+      ;;
+    6 )
+      echo "Opening Xcalc..."
+      result=$(xcalc &> /dev/null &)
       sleep 3
       ;;
   esac

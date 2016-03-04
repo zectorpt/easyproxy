@@ -35,7 +35,7 @@ sleep 2
 yum groupinstall "X Window System" -y --skip-broken
 echo -e "\nInstalling Xclock.\n"
 sleep 2
-yum install xclock nautilus xeyes -y
+yum install xclock nautilus xeyes xcalc -y
 echo -e "\nYum updating....\n"
 sleep 2
 yum update -y
