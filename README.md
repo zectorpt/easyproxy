@@ -41,6 +41,12 @@ A: It's not free. You should send me an email saying Thank you!<br>
 Q: I really need help, who can help me?<br>
 A: Send me an email.<br>
 
+Q: I downloaded a file with Chrome, how can I get it to my laptop?
+A: In your browser do: http://IP:443
+
+Q: Why do you choose 443 do apache?
+A: because in most Companies and Countries the 80 and 443 port all allways open (http && https)
+
 Q: This is a closed project? It's possible improve?
 A: YES! The menu and the applications installed can be much more! Try more applications and add them to the menu!
 
