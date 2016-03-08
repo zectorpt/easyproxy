@@ -45,7 +45,7 @@ Q: I downloaded a file with Chrome, how can I get it to my laptop?<br>
 A: In your browser do: http://IP:443<br>
 
 Q: Why do you choose 443 do apache?<br>
-A: because in most Companies and Countries the 80 and 443 port all allways open (http && https)<br>
+A: Because in most Companies and Countries the 80 and 443 port all allways open (http && https)<br>
 
 Q: This is a closed project? It's possible improve?<br>
 A: YES! The menu and the applications installed can be much more! Try more applications and add them to the menu!<br>
