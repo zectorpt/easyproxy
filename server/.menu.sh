@@ -25,6 +25,7 @@ while true; do
     "4" "File Manager Nautilus" \
     "5" "Xeyes - Just to play..." \
     "6" "Xcalc - Calculator" \
+    "7" "Gedit - Text Editor" \
     2>&1 1>&3)
   exit_status=$?
   exec 3>&-
@@ -75,5 +76,11 @@ while true; do
       result=$(xcalc &> /dev/null &)
       sleep 3
       ;;
+    7 )
+      echo "Opening gedit..."
+      result=$(gedit &> /dev/null &)
+      sleep 3
+      ;;
+
   esac
 done
