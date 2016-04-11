@@ -4,12 +4,12 @@
 If you already have a VPS, you can use it. If not, you can buy one for less than 2eur / month <br><br>
 
 Pre requirements:<br>
-Centos 7<br>
-Min 1GB RAM<br>
+VPS with Centos 7<br>
+1GB RAM (minimum)<br>
 
 Remote server:<br>
 ssh to vps as root<br>
-yum install git -y
+yum install git -y<br>
 git clone https://github.com/zectorpt/easyproxy.git<br>
 cd easyproxy/server/<br>
 ./SETUP.sh<br>
