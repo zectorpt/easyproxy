@@ -21,6 +21,7 @@ service httpd stop
 
 #Add user trtcode / password... and create folder scripts
 useradd trtcode; echo "trtcode" | passwd trtcode --stdin
+mkdir -p /home/trtcode/Downloads
 
 #Check if EPEL is installed, if not... install
 echo -e "\nInstalling EPEL.\n"
