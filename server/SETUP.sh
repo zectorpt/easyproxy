@@ -202,6 +202,9 @@ cp .menu.sh /home/trtcode/scripts/.menu.sh
 sleep 1
 chmod 755 /home/trtcode/scripts/.menu.sh
 
+#Prevent bind of SSL
+rm -f /etc/httpd/conf.d/ssl.conf
+
 #Restarting services
 service sshd restart
 systemctl restart httpd
