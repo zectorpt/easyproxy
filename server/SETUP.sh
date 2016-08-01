@@ -38,7 +38,7 @@ sleep 2
 echo -e "\nInstalling Apache.\n"
 sleep 2
 yum groupinstall "Web Server" -y --skip-broken
-yum install xclock nautilus xeyes xcalc gedit -y
+yum install xclock nautilus xeyes xcalc gedit wget -y
 echo -e "\nYum updating....\n"
 sleep 2
 yum update -y
