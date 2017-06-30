@@ -20,7 +20,7 @@ Insert the IP of the remote server in config.cfg<br>
 
 In your local computer (Windows):<br>
 Insert IP of the remote server in connect.bat<br>
-putty.exe -P 80 -X root@IP -pw PASS<br>
+putty.exe -P 80 -X trtcode@IP -pw trtcode<br>
 
 FAQ:<br>
 Q: My company block the port 80, how can I be free?<br>
